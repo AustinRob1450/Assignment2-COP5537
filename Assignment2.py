@@ -3,12 +3,14 @@ from re import T
 from tracemalloc import start
 import pandas
 import sys
-import scipy
+import numpy as np
+import json
 
 class Fleury():
-    def __init__(self, vertices):
+    def __init__(self, vertices, graph):
         self.V = vertices
-        self.graph = {}
+        self.graph = {graph}
+        print(self.graph)
 
     # ---------- addEdge
     # ----------------------------------------
@@ -78,7 +80,7 @@ class Fleury():
             if visited[itr] == False:
                 count += count + self.depthFirstSearch(itr, visited)
         return count
-    
+
 
     # ---------- checkEdge
     # ----------------------------------------
@@ -94,9 +96,23 @@ class Fleury():
         counter = self.depthFirstSearch(currentV, visited)
         self.removeEdge(currentV, pairedV)
         
+def main():
+    # with open('Data.txt', 'r') as f:
+    #     data = f.readlines()
+    data = np.loadtxt('Data.txt', dtype=str)
+    print('data:\n', type(data))
+    # print('data:\n', data)
 
-        # dpethFirstSearch
+    # graph = [[1,2,3,4,],
+    #          [5,6,7,8,]]
+    for x in data:
+        for y in x:
+            break
+    print(np.shape(data))
+    print(data[20][0])
 
+    
 if __name__ == '__main__':
     # Read in the text file here.
-    print("I tried")
+    print('---- I tried. ----')
+    main()
